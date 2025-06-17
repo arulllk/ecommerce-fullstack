@@ -34,8 +34,7 @@ const createProduct = async(req,res,next) => {
             "status":"Success",
             "message":"Product created successfully",
             "data":{
-                product:product,
-                image:cloudinaryResult 
+                product:product                
             }
         })
     } catch (error) {
@@ -46,7 +45,19 @@ const createProduct = async(req,res,next) => {
         }
         next(error)
     }
-
 }
 
-module.exports = {createProduct};
+const getAllProducts = async (req,res) => {
+    const products = await Product.find({}).sort('createdAt');
+    res.status(200).json({
+        "status":"Success",
+        "message":"Products retrived successfully",
+        data:{
+            products
+        }
+    })
+}
+
+
+
+module.exports = {createProduct ,getAllProducts };

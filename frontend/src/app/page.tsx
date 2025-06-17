@@ -2,48 +2,7 @@
 import Image from "next/image";
 import { useEffect } from "react";
 
-export default function Home() {
-   useEffect(() => {
-    // Call your function here
-    myFunction();
-  }, []); // Empty dependency array = run once on load
-
-  function myFunction() {
-    let pageError = [
-                    {
-                      message: 'Please select the category of the product',
-                      path: [ 'category' ],
-                      type: 'any.required',
-                      context: { label: 'category', key: 'category' }
-                    },
-                    {
-                      message: '"mrp" is required',
-                      path: [ 'mrp' ],
-                      type: 'any.required',
-                      context: { label: 'mrp', key: 'mrp' }
-                    },
-                    {
-                      message: 'Please add selling price',
-                      path: [ 'sellingPrice' ],
-                      type: 'any.required',
-                      context: { label: 'sellingPrice', key: 'sellingPrice' }
-                    },
-                    {
-                      message: 'Slug is required',
-                      path: [ 'slug' ],
-                      type: 'any.required',
-                      context: { label: 'slug', key: 'slug' }
-                    }
-                  ]
-
-    const tempError = Object.keys(pageError.err.errors).reduce((acc, key) => {
-      const typedKey = key as keyof typeof pageError.err.errors;
-      acc[key] = pageError.err.errors[typedKey].message;
-      return acc;
-    }, {} as Record<string, string>);
-    console.log("Page loaded!" , tempError);
-    // Add your logic here
-  }
+export default function Home() {   
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
